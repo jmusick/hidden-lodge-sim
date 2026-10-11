@@ -1,5 +1,10 @@
 # Local WoW Nightly Droptimizer
 
+Repository: [jmusick/hidden-lodge-sim](https://github.com/jmusick/hidden-lodge-sim). Local folder: `C:/Users/JD/source/hidden-lodge-sim`.
+
+This README owns setup and usage; [AGENTS.md](AGENTS.md) owns coding conventions. Companion projects: [website](https://github.com/jmusick/hidden-lodge-website/blob/main/README.md) · [addon](https://github.com/jmusick/hidden-lodge-addon/blob/master/README.md) · [desktop](https://github.com/jmusick/hidden-lodge-desktop/blob/master/README.md). Creative masters and provenance live in `C:/Users/JD/projects/hidden-lodge/README.md`. The Obsidian project note links to these files; implementation and operational instructions belong here.
+
+
 This project runs SimulationCraft locally in a Droptimizer-style flow:
 1. Sim your baseline character profile.
 2. Sim each candidate item scenario.
@@ -92,11 +97,11 @@ Configs can define spec-specific loot pools:
 
 ```json
 {
-  "candidates_path": "C:/Projects/LodgeSim/generated/live-candidates/candidates.hunter-survival.all-raids-normal-hc-mythic.live.json",
+  "candidates_path": "C:/Users/JD/source/hidden-lodge-sim/generated/live-candidates/candidates.hunter-survival.all-raids-normal-hc-mythic.live.json",
   "strict_spec_mapping": true,
   "candidates_by_spec": {
-    "hunter:survival": "C:/Projects/LodgeSim/generated/live-candidates/candidates.hunter-survival.all-raids-normal-hc-mythic.live.json",
-    "paladin:holy": "C:/Projects/LodgeSim/generated/live-candidates/candidates.paladin-holy.all-raids-normal-hc-mythic.live.json"
+    "hunter:survival": "C:/Users/JD/source/hidden-lodge-sim/generated/live-candidates/candidates.hunter-survival.all-raids-normal-hc-mythic.live.json",
+    "paladin:holy": "C:/Users/JD/source/hidden-lodge-sim/generated/live-candidates/candidates.paladin-holy.all-raids-normal-hc-mythic.live.json"
   }
 }
 ```
@@ -131,12 +136,12 @@ If `armory_url` is set in `config.json`, single mode imports from Armory automat
   "raiders": [
     {
       "name": "WarriorMain",
-      "profile_path": "C:/Projects/LodgeSim/input/warrior_main.simc"
+      "profile_path": "C:/Users/JD/source/hidden-lodge-sim/input/warrior_main.simc"
     },
     {
       "name": "PriestAlt",
-      "profile_path": "C:/Projects/LodgeSim/input/priest_alt.simc",
-      "candidates_path": "C:/Projects/LodgeSim/candidates-priest.json"
+      "profile_path": "C:/Users/JD/source/hidden-lodge-sim/input/priest_alt.simc",
+      "candidates_path": "C:/Users/JD/source/hidden-lodge-sim/candidates-priest.json"
     }
   ]
 }
@@ -189,7 +194,7 @@ strict upgrades.
 
 ## Website Sim Runner (Dev vs Prod)
 
-Use `website_sim_runner.py` to pull team targets from HiddenLodgeWebsite and
+Use `website_sim_runner.py` to pull team targets from hidden-lodge-website and
 push run lifecycle + results back.
 
 Set environment-specific values once:
@@ -333,13 +338,13 @@ The nightly wrapper updates SimulationCraft first. Skip that only if needed:
 Run this once in PowerShell (adjust account/time/path):
 
 ```powershell
-schtasks /Create /TN "WoW-Droptimizer-Nightly" /SC DAILY /ST 02:00 /TR "powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Projects\LodgeSim\run-nightly.ps1 -ConfigPath C:\Projects\LodgeSim\config.json" /F
+schtasks /Create /TN "WoW-Droptimizer-Nightly" /SC DAILY /ST 02:00 /TR "powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Users\JD\source\hidden-lodge-sim\run-nightly.ps1 -ConfigPath C:\Users\JD\source\hidden-lodge-sim\config.json" /F
 ```
 
 Optional separate updater task (recommended 15-30 minutes before sim):
 
 ```powershell
-schtasks /Create /TN "WoW-SimC-Update" /SC DAILY /ST 01:30 /TR "powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Projects\LodgeSim\update-simc.ps1" /F
+schtasks /Create /TN "WoW-SimC-Update" /SC DAILY /ST 01:30 /TR "powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Users\JD\source\hidden-lodge-sim\update-simc.ps1" /F
 ```
 
 or with helper script:
