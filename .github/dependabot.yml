@@ -20,3 +20,34 @@ updates:
       minor-and-patch:
         patterns: ["*"]
         update-types: [minor, patch]
+
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: monthly
+      time: "06:00"
+    open-pull-requests-limit: 5
+    labels: [dependencies]
+    cooldown:
+      default-days: 7
+      semver-major-days: 14
+    groups:
+      minor-and-patch:
+        patterns: ["*"]
+        update-types: [minor, patch]
+
+  # Keeps SHA-pinned actions current, including the jmusick/ci shared workflows.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+      time: "06:00"
+    open-pull-requests-limit: 3
+    labels: [dependencies]
+    cooldown:
+      default-days: 7
+      exclude:
+        - "jmusick/*"
+    groups:
+      actions:
+        patterns: ["*"]
