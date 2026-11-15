@@ -38,3 +38,6 @@ tmp-*/
 
 # VS Code workspace settings
 .vscode/
+
+# Node dependencies
+node_modules/

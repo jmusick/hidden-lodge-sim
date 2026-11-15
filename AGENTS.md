@@ -18,3 +18,7 @@ Guidance for agents in `hidden-lodge-sim`. See [README.md](README.md) for setup,
 - Existing `LodgeSim` executable names, user-agent strings, and `X-LodgeSim-Key` are runtime names/contracts; a repository rename does not rename them.
 - Validate Python syntax for changed modules; use a small local fixture for scoring/config changes before starting expensive sims. Do not launch a guild-wide production run as a smoke test.
 - Maintain setup/implementation docs here. The Obsidian project note is an index plus personal context.
+
+## CI
+
+- `.github/workflows/ci.yml` calls the shared `jmusick/ci` baseline workflow (pinned by SHA) and exposes a **CI gate** job. Dependabot keeps the pin, pip, and npm current. `node_modules/` is not tracked.
