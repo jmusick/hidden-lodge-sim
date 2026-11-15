@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@astrojs/check": "^0.9.8",
+    "@astrojs/check": "^0.9.12",
     "typescript": "^5.9.3"
   }
 }
